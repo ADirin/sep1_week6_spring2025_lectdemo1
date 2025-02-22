@@ -5,43 +5,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
+                bat 'mvn install'
             }
-        }
-
-        stage('Build') {
-            steps {
-                bat 'mvn clean compile'
-            }
-        }
-
-        stage('Run JUnit Tests') {
-            steps {
-                bat 'cmd /c mvn test -DskipTests=false'
-            }
-        }
-
-        stage('Verify Test Reports') {
-            steps {
-                bat 'cmd /c dir target\\surefire-reports' // Debug step
-            }
-        }
-
-        stage('Generate JUnit Test Report') {
-            steps {
-                junit 'target/surefire-reports/*.xml'
-            }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true
-        }
-        failure {
-            echo 'Build failed! Check the logs for errors.'
-        }
-        success {
-            echo 'Build and tests passed successfully!'
         }
     }
 }
