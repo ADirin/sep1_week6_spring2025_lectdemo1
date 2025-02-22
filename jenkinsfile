@@ -1,9 +1,9 @@
 pipeline{
     agent any
     stages{
-        stages ('building'){
+        stage ('building'){
             steps {
-                git branch: 'master', credentialsId 'ADirin', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
+                git branch: 'master', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
             }
         }
     }
