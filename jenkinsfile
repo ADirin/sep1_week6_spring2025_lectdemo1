@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage ('building'){
+        stage ('checking'){
             steps {
                 git branch: 'master', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
 
