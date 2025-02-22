@@ -3,8 +3,8 @@ pipeline{
     stages{
         stage ('building'){
             steps {
-                git branch: 'master', credentialsId 'ADirin', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
-                bat 'mvn clean install'
+                git branch: 'master', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
+
             }
         }
         stage ('building') {
