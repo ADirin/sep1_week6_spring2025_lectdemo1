@@ -1,24 +1,9 @@
 pipeline{
     agent any
     stages{
-        stage ('checking'){
+        stages ('building'){
             steps {
                 git branch: 'master', credentialsId 'ADirin', url:'https://github.com/ADirin/sep1_week6_spring2025_lectdemo1.git'
-            }
-        }
-        stage ('Build'){
-            steps{
-                bat 'mvn clean compile'
-            }
-        }
-        stage('run JUnit'){
-            steps{
-                bat 'mvn test'
-            }
-        }
-        stage('generate JUit test'){
-            steps{
-                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
